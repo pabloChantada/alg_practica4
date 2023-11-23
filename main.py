@@ -44,7 +44,7 @@ def test_dijkstra(iterations):
     '''
     Test de complejidad del algoritmo con tamaño del vector inicial 128
     '''
-    n = 128                                         # Tamaño inicial del vector
+    n = 1                                         # Tamaño inicial del vector
     table = PrettyTable()                           # Contruccion de la tabla del algoritmo
     for _ in range(iterations):                     # Iteramos el algoritmo las veces que se indique
         matriz = matrizAleaotoria(n)                # Generacion del vector
@@ -52,15 +52,10 @@ def test_dijkstra(iterations):
         dijkstra(matriz)                            # Ejecucion del algoritmo
         time_end = time.perf_counter_ns()           # Fin del contador
         time_final = time_end - time_start          # Calculo del tiempo final
-        if time_final < 1000000:                    # Situamos el umbral de confianza en 1.000.000ns                                  # Caso descendente o aleatorio (se modifica el vector)
-            time_final = umbral(n)
+        '''if time_final < 1000000:                    # Situamos el umbral de confianza en 1.000.000ns
+            time_final = umbral(n)                                  # Caso descendente o aleatorio (se modifica el vector)'''
         add_data(time_final, n, table)              # Añadimos la fila a la tabla
         n *= 2                                      # Progresion geometrica de 2
     print(table)
 
-
-print(dijkstra(matrix))
-print()
-print(dijkstra(matrix2))
-print()
-test_dijkstra(10)
+test_dijkstra(11)
