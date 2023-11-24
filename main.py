@@ -16,8 +16,8 @@ def add_data(time_final, n, table):
     time_string = f"{time_final:.6f}"                       # Convertimos el tiempo a string
     if isinstance(time_final, float):                       # Comprobamos si pasa por el umbral
         time_string += "(*)"                                # Si pasa, añadimos un asterisco
-    exponents = [n**2.9, n**3, n**3.1]                      # Exponentes de las cotas
-    exponents_str = ["n**2.9", "n**3", "n**3.1"]            # Exponentes de las cotas en string
+    exponents = [n**2.9, n**2.97, n**3.1]                   # Exponentes de las cotas
+    exponents_str = ["n**2.9", "n**2.97", "n**3.1"]            # Exponentes de las cotas en string
     # Añadimos los nombres de las columnas
     table.field_names = ["n", "t(n) (ns)"] + \
         [f"t(n) / ({exponent})" for exponent in exponents_str]  

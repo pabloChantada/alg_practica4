@@ -66,17 +66,17 @@ de estos test es minimo.
 
 ---------- EJERCICIO 3 ----------
 
-+-------+---------------------+-----------------+---------------+-----------------+
-|   n   |      t(n) (ns)      | t(n) / (n**2.9) | t(n) / (n**3) | t(n) / (n**3.1) |
-+-------+---------------------+-----------------+---------------+-----------------+
-| 16    |    1696300.000000   |    546.455388   |   414.135742  |    313.856203   |
-| 32    |   13760500.000000   |    593.880790   |   419.937134  |    296.940395   |
-| 64    |   108082300.000000  |    624.931841   |   412.301254  |    272.017383   |
-| 128   |   839240100.000000  |    650.095732   |   400.180864  |    246.340218   |
-| 256   |  6602082900.000000  |    685.149072   |   393.514806  |    226.014905   |
-| 512   |  52374778700.000000 |    728.180952   |   390.222510  |    209.115065   |
-| 1024  | 417058233200.000000 |    776.831495   |   388.415748  |    194.207874   |
-+-------+---------------------+-----------------+---------------+-----------------+
++-------+---------------------+-----------------+------------------+-----------------+
+|   n   |      t(n) (ns)      | t(n) / (n**2.9) | t(n) / (n**2.97) | t(n) / (n**3.1) |
++-------+---------------------+-----------------+------------------+-----------------+
+| 16    |    1736700.000000   |    559.470066   |    460.774520    |    321.331172   |
+| 32    |   13490600.000000   |    582.232345   |    456.810239    |    291.116173   |
+| 64    |   107483700.000000  |    621.470736   |    464.502532    |    270.510850   |
+| 128   |   842385400.000000  |    652.532158   |    464.619273    |    247.263450   |
+| 256   |  6698538400.000000  |    695.159003   |    471.527856    |    229.316951   |
+| 512   |  51296504900.000000 |    713.189414   |    460.846179    |    204.809877   |
+| 1024  | 403260586300.000000 |    751.131375   |    462.375598    |    187.782844   |
++-------+---------------------+-----------------+------------------+-----------------+
 
 NOTA: los datos con (*) son tiempos medios de 1000 ejecuciones del algoritmo ya que no consiguieron superar el umbral de confianza. 
 
@@ -84,12 +84,12 @@ NOTA: los datos con (*) son tiempos medios de 1000 ejecuciones del algoritmo ya 
 
 Las cotas que estudiamos son:
 - SUBESTIMADA: n**2.9
-- AJUSTADA: n**3
+- AJUSTADA: n**2.97
 - SOBRESTIMADA: n**3.1
 
-Analizando la tabla podemos comprobar que; t(n) / (n**2.9) crece hacia infinito, t(n) / (n**3) tiende a una constante de ~400, y t(n) / (n**3.1) decrece hacia 0. 
+Analizando la tabla podemos comprobar que; t(n) / (n**2.9) crece hacia infinito, t(n) / (n**2.97) tiende a una constante de ~462, y t(n) / (n**3.1) decrece hacia 0. 
 Por ello podemos decir que esta implementacion del algoritmo presenta una complejidad O(n^3).
 
 Podemos observar una diferencia entre la cota teoria O(N^2) difiere significativamente de la cota practica en este caso que pasa a ser O(n^3) y vemos en la tabla
-que si intentamos bajar hacia O(n^2) el tiempo crece rapidamente. Esto lo podemos observar no solo en la tendencia constante en el caso de  t(n) / (n**3) sino en 
+que si intentamos bajar hacia O(n^2) el tiempo crece rapidamente. Esto lo podemos observar no solo en la tendencia constante en el caso de  t(n) / (n**2.97) sino en 
 el propio tiempo de ejecucion del algoritmo; ya que el paso de 512 a 1024 es elevadamente superior al de 256 a 512.
