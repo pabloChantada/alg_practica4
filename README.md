@@ -1,1 +1,0 @@
-# alg_practica4

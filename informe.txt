@@ -1,0 +1,95 @@
+INFORME PRÁCTICA 4 - ALGORITMOS
+
+Pablo Chantada Saborido (pablo.chantada@udc.es)
+Aldana Smyna Medina Lostaunau (aldana.medina@udc.es)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+INTRODUCCIÓN
+
+En esta práctica, se implementará el algoritmo de Dijkstra y se verificará su correcto funcionamiento para el calculo de distancias minimas de los grafos 
+distancias minimas. Para ello usaremos grafos no dirigidos con pesos aleatorios entre 1 y 1000; es decir, estrictamente positivos.
+
+Para garantizar valores precisos, usaremos un umbral de confianza de 1.000.000 ns. Ejecutando 1000 veces el algoritmo y haciendo la 
+media de los tiempos resultantes en todos los casos que no superen dicho umbral. Para representarlo en la tabla se indicará con un (*) al lado del tiempo.
+
+Para las mediciones utilizaremos un ordenador de mesa con las siguientes características: 
+- Sistema Operativo: Windows 10 Home, 54 bits
+- Procesador: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz   2.90 GHz, 6 core
+- RAM: 16 Gb
+- Python 3.12.0
+
+Por último, TODOS LOS VALORES UTILIZADOS EN EL INFORME ESTARÁN EN NANOSEGUNDOS (ns).
+
+---------- EJERCICIO 1 y 2 ----------
+
+Comprobamos la correcta implementacion del algoritmo de Dijkstra con las matrices de ejemplo presentadas en el campus virtual:
+
+# MATRIZ DE ADYACENCIA 1
+
+Matriz Adyacencia
+[0, 1, 3, 4, 6]
+[1, 0, 2, 5, 5]
+[3, 2, 0, 7, 5]
+[4, 5, 7, 0, 3]
+[6, 5, 5, 3, 0]
+
+Matriz Distancias Minimas
+ [[0 1 3 4 6]
+ [1 0 2 5 5]
+ [3 2 0 7 5]
+ [4 5 7 0 3]
+ [6 5 5 3 0]]
+
+========================================
+
+ 
+# MATRIZ DE ADYACENCIA 2
+Matriz Adyacencia
+[0, 1, 4, 7]
+[1, 0, 2, 8]
+[4, 2, 0, 3]
+[7, 8, 3, 0]
+
+Matriz Distancias Minimas
+ [[0 1 3 6]
+ [1 0 2 5]
+ [3 2 0 3]
+ [6 5 3 0]]
+
+
+---------- CONCLUSIONES 1 ----------
+
+Ejecutando el archivo main.py con test_dijkstra(), podemos observar que los resultados obtenidos y los resultados del campus virutal coinciden, por ello
+podemos confirmar que la implementacion del algoritmo es correcta. Ademas cabe destacar, que al ser matrices pequeñas (4x4 y 5x5) el tiempo de ejecucion
+de estos test es minimo.
+
+---------- EJERCICIO 3 ----------
+
++-------+---------------------+-----------------+---------------+-----------------+
+|   n   |      t(n) (ns)      | t(n) / (n**2.9) | t(n) / (n**3) | t(n) / (n**3.1) |
++-------+---------------------+-----------------+---------------+-----------------+
+| 16    |    1696300.000000   |    546.455388   |   414.135742  |    313.856203   |
+| 32    |   13760500.000000   |    593.880790   |   419.937134  |    296.940395   |
+| 64    |   108082300.000000  |    624.931841   |   412.301254  |    272.017383   |
+| 128   |   839240100.000000  |    650.095732   |   400.180864  |    246.340218   |
+| 256   |  6602082900.000000  |    685.149072   |   393.514806  |    226.014905   |
+| 512   |  52374778700.000000 |    728.180952   |   390.222510  |    209.115065   |
+| 1024  | 417058233200.000000 |    776.831495   |   388.415748  |    194.207874   |
++-------+---------------------+-----------------+---------------+-----------------+
+
+NOTA: los datos con (*) son tiempos medios de 1000 ejecuciones del algoritmo ya que no consiguieron superar el umbral de confianza. 
+
+---------- CONCLUSIONES 2 ----------
+
+Las cotas que estudiamos son:
+- SUBESTIMADA: n**2.9
+- AJUSTADA: n**3
+- SOBRESTIMADA: n**3.1
+
+Analizando la tabla podemos comprobar que; t(n) / (n**2.9) crece hacia infinito, t(n) / (n**3) tiende a una constante de ~400, y t(n) / (n**3.1) decrece hacia 0. 
+Por ello podemos decir que esta implementacion del algoritmo presenta una complejidad O(n^3).
+
+Podemos observar una diferencia entre la cota teoria O(N^2) difiere significativamente de la cota practica en este caso que pasa a ser O(n^3) y vemos en la tabla
+que si intentamos bajar hacia O(n^2) el tiempo crece rapidamente. Esto lo podemos observar no solo en la tendencia constante en el caso de  t(n) / (n**3) sino en 
+el propio tiempo de ejecucion del algoritmo; ya que el paso de 512 a 1024 es elevadamente superior al de 256 a 512.

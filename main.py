@@ -82,16 +82,19 @@ matrix1 = [
 ]
 
 matrix2 = [
-    [0, 1, 3, 4, 6],
-    [1, 0, 2, 5, 5],
-    [3, 2, 0, 7, 5],
-    [4, 5, 7, 0, 3],
-    [6, 5, 5, 3, 0]
+    [0, 1, 8, 4, 7],
+    [1, 0, 2, 6, 5],
+    [8, 2, 0, 9, 5],
+    [4, 6, 9, 0, 3],
+    [7, 5, 5, 3, 0]
 ]
 
 # ----------------------------- DIJKSTRA ----------------------------- #
 
 def dijkstra(M):
+    '''
+    Devuelve la matriz de distancias minimas de una matriz de adyacencia
+    '''
     num_nodos = len(M)                                              # Numero de nodos
     Distancias = np.array(M)                                        # Matriz de distancias              
     for m in range(num_nodos):                                      # Iteramos sobre los nodos
@@ -108,6 +111,34 @@ def dijkstra(M):
                                                                     # actualizamos la distancia
     return Distancias   
 
+# ----------------------------- TEST ----------------------------- #
+
+def test_complejidades(tablas, iteraciones):
+    '''
+    Test de complejidad de dijsktra con matrices de tamaño incial 16
+    '''
+    for _ in range(tablas):              # Matrices de tamaño 1024 como maximo
+        print(tablas_dijsktra(iteraciones))
+
+def print_dijkstra(matriz, tamano):
+    '''
+    Imprime una matriz de ejemplo
+    '''
+    print("\nMatriz Adyacencia")
+    for i in range(tamano):              # Mostramos la matriz de ejemplo
+        print(matriz[i])
+    matriz_final = dijkstra(matriz)      # Calculamos la matriz de distancias minimas
+    print("\nMatriz Distancias Minimas\n")
+    for i in range(tamano):              # Mostramos la matriz de distancias minimas 2
+        print(matriz_final[i]) 
+    
+def test_dijkstra():
+    '''
+    Test de dijkstra con las matrices de ejemplo
+    '''
+    print_dijkstra(matrix1, 4)           # Mostramos la matriz1 de ejemplo
+    print_dijkstra(matrix2, 5)           # Mostramos la matriz2 de ejemplo
+    
 if __name__ == "__main__":
-    for _ in range(7):              # Matrices de tamaño 1024 como maximo
-        print(tablas_dijsktra(7))
+    # test_dijkstra()
+    test_complejidades(4, 7)            # Test de complejidad con 4 tablas y 7 iteraciones (maximo 7 iteraciones)
