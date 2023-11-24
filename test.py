@@ -2,7 +2,10 @@ import numpy as np
 import time
 from main import dijkstra
 from numpy import random  
-
+'''
+Pablo Chantada Saborido (pablo.chantada@udc.es)
+Aldana Smyna Medina Lostaunau (aldana.medina@udc.es)
+'''
 def matrizAleatoria(n):
     m = random.randint(low=1, high=1000, size=(n,n))
     return(np.tril(m, -1) + np.tril(m, -1).T)

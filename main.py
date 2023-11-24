@@ -4,6 +4,10 @@ from prettytable import PrettyTable
 import time 
 from tabla import add_data
 
+'''
+Pablo Chantada Saborido (pablo.chantada@udc.es)
+Aldana Smyna Medina Lostaunau (aldana.medina@udc.es)
+'''
 def umbral(n):
     '''
     Umbral de confianza al no pasar el 1.000.000ns
@@ -61,7 +65,7 @@ def dijkstra(M):
                     Distancias[m][w] = Distancias[m][v] + M[v][w]
     return Distancias
 
-def test_dijkstra(iterations):
+def tablas_dijsktra(iterations):
     '''
     Test de complejidad del algoritmo con tamaño del vector inicial 128
     '''
@@ -76,9 +80,9 @@ def test_dijkstra(iterations):
         if time_final < 1000000:                    # Situamos el umbral de confianza en 1.000.000ns
             time_final = umbral(n)                                  # Caso descendente o aleatorio (se modifica el vector)'''
         add_data(time_final, n, table)              # Añadimos la fila a la tabla
-        #n*=2                                        # Duplicamos el tamaño del vector
+        n*=2                                        # Duplicamos el tamaño del vector
     return table
 
-print(test_dijkstra(4))
-print(test_dijkstra(4))
-print(test_dijkstra(4))
+print(tablas_dijsktra(7))
+print(tablas_dijsktra(7))
+print(tablas_dijsktra(7))
