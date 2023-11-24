@@ -140,5 +140,5 @@ def test_dijkstra():
     print_dijkstra(matrix2, 5)           # Mostramos la matriz2 de ejemplo
     
 if __name__ == "__main__":
-    # test_dijkstra()
+    test_dijkstra()
     test_complejidades(4, 7)            # Test de complejidad con 4 tablas y 7 iteraciones (maximo 7 iteraciones)
