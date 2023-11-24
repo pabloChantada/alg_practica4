@@ -7,8 +7,8 @@ Aldana Smyna Medina Lostaunau (aldana.medina@udc.es)
 
 INTRODUCCIÓN
 
-En esta práctica, se implementará el algoritmo de Dijkstra y se verificará su correcto funcionamiento para el calculo de distancias minimas de los grafos 
-distancias minimas. Para ello usaremos grafos no dirigidos con pesos aleatorios entre 1 y 1000; es decir, estrictamente positivos.
+En esta práctica, se implementará el algoritmo de Dijkstra y se verificará su correcto funcionamiento para el calculo de distancias minimas de los grafos.
+Para ello usaremos grafos no dirigidos con pesos aleatorios entre 1 y 1000; es decir, estrictamente positivos.
 
 Para garantizar valores precisos, usaremos un umbral de confianza de 1.000.000 ns. Ejecutando 1000 veces el algoritmo y haciendo la 
 media de los tiempos resultantes en todos los casos que no superen dicho umbral. Para representarlo en la tabla se indicará con un (*) al lado del tiempo.
